@@ -5,12 +5,9 @@ import chess
 
 # Define functions
 def main():
-    inString = []
-    while True:
-        line = input()
-        if line == '':  # Check if the line is empty
-            break
-        inString.append(line)
+    inString = [0,0]
+    inString[0] = input()
+    inString[1] = input()
     board = chess.Board(inString[0])
     move = chess.Move.from_uci(inString[1])
     board.push(move)
