@@ -1,2 +1,2 @@
-# AI-
-AI Project
+# AI - Reconnaissance Blind Chess
+
