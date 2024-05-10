@@ -9,8 +9,8 @@ def generate_next_moves(fen):
     for move in pseudolegal_moves:
         next_moves.add(move.uci())
 
-    next_moves.add("0000")
-
+    next_moves.add(str(chess.Move.null()))
+    
     for move in rutils.without_opponent_pieces(board).generate_castling_moves():
         if not rutils.is_illegal_castle(board, move):
             next_moves.add(move.uci())
