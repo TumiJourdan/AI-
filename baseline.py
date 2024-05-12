@@ -23,7 +23,17 @@ class MyAgent(Player):
             self.possible_states = {state for state in self.possible_states if self.board.set_fen(state) and not any(self.board.is_capture(move) for move in self.board.pseudo_legal_moves)}
 
     def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
-        valid_sense_actions = [square for square in sense_actions if square not in [chess.A1, chess.A8, chess.H1, chess.H8]]
+    # Exclude squares on the perimeter of the board
+        valid_sense_actions = [square for square in sense_actions if square not in [
+            chess.A1, chess.A2, chess.A3, chess.A4, chess.A5, chess.A6, chess.A7, chess.A8,
+            chess.B1, chess.B8,
+            chess.C1, chess.C8,
+            chess.D1, chess.D8,
+            chess.E1, chess.E8,
+            chess.F1, chess.F8,
+            chess.G1, chess.G8,
+            chess.H1, chess.H2, chess.H3, chess.H4, chess.H5, chess.H6, chess.H7, chess.H8
+        ]]
         return random.choice(valid_sense_actions) if valid_sense_actions else None
 
     def handle_sense_result(self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]):
