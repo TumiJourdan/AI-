@@ -11,8 +11,8 @@ def capture_opponent_king(board):
     return None
 
 def select_move_with_stockfish(board):
-    # engine = chess.engine.SimpleEngine.popen_uci('./stockfish', setpgrp=True)
-    engine = chess.engine.SimpleEngine.popen_uci('/opt/stockfish/stockfish', setpgrp=True)
+    engine = chess.engine.SimpleEngine.popen_uci('./stockfish.exe', setpgrp=True)
+    # engine = chess.engine.SimpleEngine.popen_uci('/opt/stockfish/stockfish', setpgrp=True)
     result = engine.play(board, chess.engine.Limit(time=0.5))
     engine.quit()
     return result.move.uci()
